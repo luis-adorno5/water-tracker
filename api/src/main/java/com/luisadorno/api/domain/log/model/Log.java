@@ -1,5 +1,7 @@
 package com.luisadorno.api.domain.log.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.luisadorno.api.domain.person.model.Person;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,6 +21,9 @@ public class Log {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+
+    @ManyToOne
+    private Person person;
 
     public Log(Integer numberOfOz, Date date) {
         this.numberOfOz = numberOfOz;

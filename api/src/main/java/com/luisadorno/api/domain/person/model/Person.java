@@ -20,19 +20,18 @@ public class Person {
 
     private String lastName;
 
+    private String userName;
+
     private Integer age;
 
     private Double weight;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Log> logs;
-
-    public Person(String firstName, String lastName, Integer age, Double weight, Set<Log> logs) {
+    public Person(String firstName, String lastName, String userName, Integer age, Double weight) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = userName;
         this.age = age;
         this.weight = weight;
-        this.logs = logs;
     }
 
     @Override
@@ -40,11 +39,11 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(age, person.age) && Objects.equals(weight, person.weight) && Objects.equals(logs, person.logs);
+        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(age, person.age) && Objects.equals(weight, person.weight);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, age, weight, logs);
+        return Objects.hash(id, firstName, lastName, age, weight);
     }
 }
